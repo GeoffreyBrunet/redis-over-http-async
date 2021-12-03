@@ -6,6 +6,12 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
-    volumes:
-      - $PWD/redis-data:/var/lib/redis
-      - $PWD/redis.conf:/usr/local/etc/redis/redis.conf
+
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    hostname: redisinsight
+    container_name: redisinsight
+    ports:
+      - '8001:8001'
+    depends_on:
+      - redis
