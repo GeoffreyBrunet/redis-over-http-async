@@ -31,7 +31,7 @@ pub async fn post_cache(
 pub async fn post_cache_with_ttl(
     pool: web::Data<Pool>,
     info: web::Path<Info>,
-    ttl_value: web::Path<Option<usize>>,
+    ttl_value: web::Path<usize>,
     bytes: Bytes,
 ) -> impl Responder {
     let from_body: String = String::from_utf8(bytes.to_vec()).unwrap();
