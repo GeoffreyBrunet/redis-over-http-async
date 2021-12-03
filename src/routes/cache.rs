@@ -1,4 +1,4 @@
-use crate::structs::Info;
+use crate::structs::{Info, FromBody};
 use actix_web::{delete, get, post, web, HttpResponse, Responder};
 use mobc_redis::redis::AsyncCommands;
 use mobc_redis::RedisConnectionManager;
