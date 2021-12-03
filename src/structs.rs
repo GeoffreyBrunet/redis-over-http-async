@@ -2,5 +2,11 @@ use serde::Deserialize;
 
 #[derive(Deserialize)]
 pub struct Info {
-    pub(crate) key: String,
+    pub key: String,
+}
+
+#[derive(Deserialize)]
+pub struct Infos {
+    pub key: String,
+    pub set_ttl: usize,
 }
