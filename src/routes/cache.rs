@@ -7,9 +7,11 @@ type Pool = mobc::Pool<RedisConnectionManager>;
 
 #[get("/cache/{key}")]
 pub async fn get_cache(pool: web::Data<Pool>, info: web::Path<Info>) -> impl Responder {
-    // TODO: return errors, check map_err
     let mut conn = pool.get().await.unwrap();
-    let s: String = conn.get(info.key.to_string()).await.unwrap();
+    let s: String = conn
+        .get(info.key.to_string())
+        .await
+        .unwrap_or(String::from("Key does not exist."));
     HttpResponse::Ok().body(s)
 }
 
